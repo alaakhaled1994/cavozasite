@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>كافوزا – تواصل معنا</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="lang-selector">
+  <button id="lang-btn">اللغة ▾</button>
+  <div class="lang-options">
+    <div id="ar" onclick="switchLang('ar')">✔ العربية</div>
+    <div id="en" onclick="switchLang('en')">الإنجليزية</div>
+  </div>
+</div>
+
+<header>
+<h1>كافوزا</h1>
+<p>تواصل معنا</p>
+</header>
+
+<nav>
+<a href="index.html">الرئيسية</a>
+<a href="contact.html">تواصل معنا</a>
+</nav>
+
+<section class="section" id="contact">
+<h2>تواصل معنا</h2>
+<form action="#">
+<label>الاسم الكامل</label><input type="text" required>
+<label>البريد الإلكتروني</label><input type="email" required>
+<label>رقم الهاتف</label><input type="text">
+<label>رسالتك</label><textarea rows="5" required></textarea>
+<button type="submit">إرسال</button>
+</form>
+</section>
+
+<footer>جميع الحقوق محفوظة © 2025 كافوزا</footer>
+<script src="script.js"></script>
+</body>
+</html>
