@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cavoza – Contact Us</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="lang-selector">
+  <button id="lang-btn">Language ▾</button>
+  <div class="lang-options">
+    <div id="ar" onclick="switchLang('ar')">العربية</div>
+    <div id="en" onclick="switchLang('en')">✔ English</div>
+  </div>
+</div>
+
+<header>
+<h1>Cavoza</h1>
+<p>Contact Us</p>
+</header>
+
+<nav>
+<a href="index-en.html">Home</a>
+<a href="contact-en.html">Contact Us</a>
+</nav>
+
+<section class="section" id="contact">
+<h2>Contact Us</h2>
+<form action="#">
+<label>Full Name</label><input type="text" required>
+<label>Email Address</label><input type="email" required>
+<label>Phone Number</label><input type="text">
+<label>Your Message</label><textarea rows="5" required></textarea>
+<button type="submit">Send</button>
+</form>
+</section>
+
+<footer>© 2025 Cavoza – All Rights Reserved</footer>
+<script src="script.js"></script>
+</body>
+</html>

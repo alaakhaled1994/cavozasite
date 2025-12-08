@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+
+body { margin:0; font-family:'Cairo', sans-serif; color:#f2f2f2; background:#000; }
+:root { --gold:#c9a14d; --gold-light:#e3c27b; }
+
+header { background:linear-gradient(90deg,#000,#111,#000); padding:40px 20px; text-align:center; border-bottom:1px solid var(--gold); }
+header h1 { color:var(--gold); font-size:42px; letter-spacing:3px; }
+header p { color:#bbb; font-size:18px; }
+
+nav { text-align:center; padding:15px; border-bottom:1px solid #222; background:#0a0a0a; }
+nav a { color:var(--gold); text-decoration:none; margin:0 15px; font-size:18px; font-weight:600; transition:0.3s; }
+nav a:hover { color:var(--gold-light); }
+
+.section { padding:60px 10%; border-bottom:1px solid #1b1b1b; }
+.section h2 { color:var(--gold-light); font-size:32px; margin-bottom:20px; border-right:4px solid var(--gold); padding-right:15px; }
+.section p, .section ul, label { font-size:20px; line-height:1.9; color:#ddd; }
+ul li { padding:6px 0; }
+
+footer { background:#0b0b0b; text-align:center; padding:25px; border-top:1px solid var(--gold); color:var(--gold-light); font-size:18px; }
+
+form { display:flex; flex-direction:column; gap:15px; background:#111; padding:30px; border:1px solid var(--gold); border-radius:8px; }
+input, textarea { padding:12px; border:1px solid #444; background:#000; color:#fff; border-radius:4px; }
+button { background:var(--gold); color:#000; padding:12px; font-size:20px; font-weight:700; border:none; cursor:pointer; }
+button:hover { background:var(--gold-light); }
+
+.lang-selector { position:absolute; top:20px; left:20px; }
+.lang-selector button { background:var(--gold); border:none; color:black; font-weight:600; padding:8px 12px; cursor:pointer; border-radius:4px; }
+.lang-options { display:none; position:absolute; top:35px; left:0; background:#111; border:1px solid var(--gold); border-radius:4px; min-width:120px; z-index:100; }
+.lang-options div { padding:6px 12px; cursor:pointer; color:#fff; }
+.lang-options div:hover { background:#222; }
