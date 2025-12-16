@@ -1,0 +1,777 @@
+html {
+    scroll-behavior: smooth;
+}
+/* ======================================= */
+/* 1. التنسيقات الأساسية والمتغيرات */
+/* ======================================= */
+:root {
+    --color-primary-dark: #2c2c2c; 
+    --color-secondary-gold: #ffc300; 
+    --color-text-light: #f0ede4; 
+    --color-text-dark: #444; 
+    --font-ar: 'Harmattan', sans-serif; 
+    --font-en: 'Arial', sans-serif; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ======================================= */
+/* 1. التنسيقات الأساسية والمتغيرات */
+/* ======================================= */
+
+body {
+    direction: rtl; 
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-bg-dark); /* التأكد من عدم وجود لون خلفية إضافي هنا */
+    color: var(--color-text-light);
+    margin: 0; /* هذا هو الأهم لعدم وجود مسافات */
+    padding: 0;
+}
+
+/* تأكد من إزالة أي تنسيقات مثل max-width على العناصر العامة */
+.container {
+    /* إذا كان لديك حاوية محددة تحيط بالصفحة، تأكد أنها لا تقيد العرض */
+    max-width: 100%; 
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-secondary-gold);
+    transition: color 0.3s;
+}
+.gold-highlight {
+    color: var(--color-secondary-gold) !important;
+}
+
+h1 {
+    font-size: 3em;
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2em;
+    color: var(--color-text-light);
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+p.intro-tagline {
+    font-size: 1.6em;
+    color: var(--color-secondary-gold);
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+p.subtitle {
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; 
+}
+
+section {
+    padding: 60px 5%;
+    width: 100%; 
+}
+
+.light-bg {
+    /* الخلفية أصبحت سوداء داكنة */
+    background-color: var(--color-primary-dark);
+    /* لون النص الأساسي أصبح فاتحاً */
+    color: var(--color-text-light);
+}
+
+.dark-bg {
+    /* سنبقي هذه الفئة كما هي لكن يمكن أن تعدل استخدامها في about.html */
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+}
+
+.hero-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.icon-gold {
+    color: var(--color-secondary-gold);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-secondary-gold);
+    color: var(--color-primary-dark);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #ffd966;
+}
+
+/* ======================================= */
+/* 2. شريط التنقل (Navbar) واللوغو */
+/* ======================================= */
+#navbar {
+    background-color: var(--color-primary-dark);
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#navbar .logo {
+    font-size: 1.7em; 
+    color: var(--color-secondary-gold); 
+    background-color: #383838;
+    padding: 8px 18px; 
+    border: 1px solid #777; 
+    box-shadow: 0 0 0 3px var(--color-secondary-gold); 
+    border-radius: 4px;
+    letter-spacing: 1px;
+    /* تم الإرجاع إلى القيمة الأصلية */
+    transition: all 0.3s; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+#navbar .logo:hover {
+    color: var(--color-primary-dark);
+    background-color: var(--color-secondary-gold);
+    /* تم الإرجاع إلى التأثير الأصلي */
+    box-shadow: 0 0 0 3px var(--color-primary-dark);
+}
+
+#navbar nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; 
+}
+
+#navbar nav a {
+    color: var(--color-text-light);
+    margin: 0 15px;
+    font-size: 1.1em; 
+}
+
+#navbar nav a:hover {
+    color: var(--color-secondary-gold);
+}
+
+#navbar nav a.active {
+    border-bottom: 2px solid var(--color-secondary-gold);
+    padding-bottom: 5px;
+}
+
+/* زر ومحول اللغة المدمج (EN/AR) */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    width: 90px; 
+    justify-content: flex-end;
+}
+
+#lang-btn {
+    background: none;
+    border: 2px solid var(--color-secondary-gold);
+    color: var(--color-secondary-gold);
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+#lang-btn:hover {
+    background-color: var(--color-secondary-gold);
+    color: var(--color-primary-dark);
+}
+
+/* ======================================= */
+/* 3. تنسيقات الصفحات المشتركة */
+/* ======================================= */
+
+/* تنسيق تخطيط المحتوى - لترتيب المحتوى الداخلي ضمن حد أقصى للحجم */
+.content-layout {
+    display: flex;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    width: 100%;
+}
+
+/* التذييل (Footer) - تلوين كلمة "شركة كاڤوزا" */
+#footer {
+    text-align: center;
+    padding: 20px 5%;
+    font-size: 0.9em;
+}
+#footer .highlight {
+    color: var(--color-secondary-gold);
+    font-weight: bold;
+}
+
+/* ======================================= */
+/* 4. تنسيقات الصفحة الرئيسية (index.html) */
+/* ======================================= */
+
+#hero-video-container {
+    position: relative;
+    overflow: hidden;
+    height: 90vh; /* تحديد الارتفاع بوحدة vh */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: none; /* التأكيد على إلغاء أي قيود عرض */
+    width: 100%; /* التأكيد على العرض الكامل */
+}
+
+#hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    /* التغطية الكاملة */
+    min-width: 100%; 
+    min-height: 100%;
+    
+    /* التوسيط */
+    transform: translate(-50%, -50%);
+    
+    /* التأكد من التغطية والحفاظ على النسبة */
+    object-fit: cover; 
+    
+    /* التأكد من ظهور النص فوقه */
+    z-index: 1; 
+    opacity: 0.8; 
+}
+
+
+#hero-video-text {
+    position: relative; 
+    z-index: 10; /* قيمة أعلى من الفيديو */
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+}
+
+
+#principles {
+    background-image: url('assets/principles_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+/* فرض اللون الأسود/الداكن على الشرح (الفقرات) داخل كل مبدأ */
+.principle-item p {
+    color: var(--color-primary-dark) !important; 
+    /* أو يمكنك استخدام اللون الأسود الصريح لضمان أعلى أسبقية: */
+    /* color: #000000 !important; */
+}
+#principles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(240, 237, 228, 0.85); 
+    z-index: 2;
+}
+#principles h2, #principles .principle-row {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px; 
+    width: 100%;
+}
+#principles h2 {
+    color: var(--color-primary-dark);
+}
+.principle-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap; 
+}
+.principle-item {
+    flex-basis: 22%; 
+    min-width: 200px; 
+    padding: 20px;
+}
+
+.principle-item i {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.principle-item h3 {
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+#about-cavoza {
+    text-align: center;
+    padding: 80px 5%;
+}
+#about-cavoza h2 {
+    color: var(--color-secondary-gold);
+}
+#about-cavoza p {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    font-size: 1.1em;
+}
+
+/* ======================================= */
+/* 5. تنسيقات صفحة نبذة عنا (about.html) */
+/* ======================================= */
+
+#about-hero {
+    position: relative;
+    overflow: hidden;
+    height: 60vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#about-background-image-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/about_hero_bg.jpg'); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1; 
+    opacity: 0.8; 
+}
+
+#about-hero h1 {
+    position: relative;
+    z-index: 10;
+    font-size: 2.5em;
+    color: var(--color-secondary-gold); 
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* الرؤية والرسالة */
+#mission-vision {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 0;
+}
+#mission-vision .image-placeholder {
+    flex: 1;
+    min-height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+#mission-vision img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#mission-vision .text-content {
+    flex: 1;
+    text-align: right;
+}
+#mission-vision h2 {
+    /* تغيير اللون إلى الذهبي لضمان رؤيته على الخلفية السوداء */
+    color: var(--color-secondary-gold);
+}
+#mission-vision h3 {
+    color: var(--color-secondary-gold); 
+    margin-top: 20px;
+}
+
+/* القيم الأساسية */
+#core-values {
+    text-align: center;
+    padding-top: 60px; 
+}
+#core-values {
+    text-align: center;
+    padding-top: 60px; 
+}
+
+/* 👈 **أضف هذا الكود هنا** */
+#core-values h2 { 
+    /* تطبيق اللون الذهبي على العنوان */
+    color: var(--color-secondary-gold);
+    font-size: 2.5em; 
+    margin-bottom: 40px; 
+}
+
+.values-grid {
+    /* ... (بقية التنسيقات) ... */
+}
+
+.values-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap; 
+    max-width: 1200px;
+    margin: 30px auto 0;
+}
+.value-item {
+    flex-basis: 220px; 
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.value-item h3 {
+    color: var(--color-secondary-gold);
+    margin: 10px 0;
+}
+
+/* قسم الأهداف */
+#our-goals {
+    text-align: right;
+}
+#our-goals h2 {
+    color: var(--color-secondary-gold);
+    text-align: center;
+    margin-bottom: 30px;
+}
+#our-goals .goals-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    max-width: 1000px; 
+    margin: 0 auto;
+}
+.goals-list {
+    list-style: none; 
+    padding: 0;
+    flex: 1;
+}
+.goals-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    font-size: 1.1em;
+}
+.goals-list li::before {
+    content: "\f058"; 
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--color-secondary-gold);
+    margin-left: 10px;
+}
+#our-goals .goals-visual {
+    flex-shrink: 0;
+}
+#our-goals .goals-visual img {
+    width: 250px; 
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+#about-hero-image {
+    background-image: url('assets/about_hero_bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    height: 90vh; 
+    position: relative;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+    color: white; 
+}
+
+#about-hero-text {
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+}
+
+#about-hero-text h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+/* نهاية أكواد قسم البطل الجديد */
+
+/* ======================================= */
+/* 6. تنسيقات صفحة تواصل معنا (contact.html) - تصحيح اللون النهائي */
+/* ======================================= */
+
+/* ... (بقية تنسيقات #contact-hero) ... */
+
+/* إعادة ضبط تنسيق المحتوى الداخلي */
+#contact-content {
+    /* ... (التنسيقات السابقة للمحاذاة) ... */
+}
+
+/* **1. حاوية النموذج ومعلومات الاتصال: لون موحد** */
+.contact-form-container,
+.contact-info {
+    flex: 1; /* إعادة ضبط لضمان التوزيع */
+    min-width: 350px;
+    /* **توحيد اللون مع مربع الموقع (#383838)** */
+    background-color: #383838; 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* ... (بقية تنسيقات العناوين h2 و h3 و label) ... */
+
+/* **2. حقول تعبئة البيانات (الفراغات)** */
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    /* **إجبار تطبيق اللون الرمادي الغامق (#333) لمنع تراجع اللون الأبيض** */
+    background-color: #333 !important; 
+    
+    /* حدود أغمق قليلاً */
+    border: 1px solid #555 !important; 
+    
+    border-radius: 5px;
+    font-family: var(--font-ar);
+    font-size: 1em;
+    resize: vertical;
+    direction: rtl; 
+    color: var(--color-text-light); 
+}
+
+/* في القسم 6. تنسيقات صفحة تواصل معنا */
+
+/* **التأثير الذهبي عند الضغط أو التركيز على حقل الإدخال (INPUT)** */
+.form-group input:focus {
+    outline: none !important;
+    border-color: var(--color-secondary-gold) !important; 
+    box-shadow: 0 0 5px rgba(255, 195, 0, 0.8) !important; 
+    background-color: #2c2c2c !important; 
+}
+
+/* **التأثير الذهبي عند الضغط أو التركيز على حقل الرسالة (TEXTAREA)** */
+.form-group textarea:focus {
+    outline: none !important;
+    border-color: var(--color-secondary-gold) !important; /* **هنا الإجبار على اللون الذهبي** */
+    box-shadow: 0 0 5px rgba(255, 195, 0, 0.8) !important; 
+    background-color: #2c2c2c !important; 
+}
+/* في القسم 6، أضف هذا التنسيق في بدايته */
+#contact-hero h1 {
+    /* تطبيق اللون الذهبي على العنوان */
+    color: var(--color-secondary-gold);
+    font-size: 3em; 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+/* ... (بقية التنسيقات الأخرى في القسم 6 تبقى كما هي) ... */
+
+
+/* ======================================= */
+/* 7. التجاوبية (Responsiveness) */
+/* ======================================= */
+
+/* تصحيحات اللغة الإنجليزية ... */
+/* (محتفظ بالتصحيحات الأصلية لديك) */
+body.en .goals-list li::before {
+    margin-right: 10px;
+    margin-left: 0;
+}
+/* ... (باقي تصحيحات اللغة الإنجليزية) ... */
+
+
+@media screen and (max-width: 768px) {
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    /* قسم البطل: تقليل الارتفاع على الجوال */
+    #contact-hero {
+        height: 40vh;
+    }
+    #contact-hero h1 {
+        font-size: 2.5em;
+    }
+
+    /* صفحة تواصل معنا (Contact): ترتيب العناصر عمودياً */
+    #contact-content {
+        flex-direction: column; 
+        padding: 20px 0;
+        gap: 40px;
+        align-items: center; 
+    }
+    
+    /* توسيع حاوية النموذج لتشغل معظم العرض */
+    .contact-form-container {
+        order: 2; 
+        width: 90%; 
+        min-width: auto; 
+        max-width: 500px;
+        padding: 25px; /* تقليل البادينج قليلاً */
+    }
+    
+    /* توسيع معلومات الاتصال لتشغل معظم العرض ووضعها في الأعلى */
+    .contact-info {
+        order: 1;
+        width: 90%;
+        text-align: right; 
+        min-width: auto;
+        padding: 25px; /* تقليل البادينج قليلاً */
+    }
+    
+    /* تصحيح تنسيق العناصر الداخلية في معلومات الاتصال ليتناسب مع العرض الصغير */
+    .contact-info .location-details {
+        text-align: right;
+    }
+    
+    /* الخريطة: عرض كامل مع مسافة */
+    #contact-map {
+        height: 300px; /* ارتفاع أقل على الجوال */
+        margin: 20px auto 40px auto;
+        padding: 0 15px;
+    }
+}
+/* ======================================= */
+/* 8. تعديل زر المزيد عنا (CTA Override) */
+/* ======================================= */
+
+#about-hero-image .cta-button {
+    /* إلغاء تنسيق الزر الكبير */
+    background-color: transparent;
+    color: var(--color-secondary-gold);
+    padding: 0; /* إزالة البادينج */
+    border-radius: 0;
+    font-weight: normal; /* إزالة التظليل الزائد */
+    font-size: 1.2em; /* تصغير حجم الخط قليلاً */
+    transition: all 0.3s ease-in-out;
+}
+
+#about-hero-image .cta-button:hover {
+    /* تنسيق عند وضع المؤشر: خط تحت النص */
+    text-decoration: underline;
+    background-color: transparent; /* التأكد من بقاء الخلفية شفافة */
+    color: var(--color-secondary-gold); /* التأكد من بقاء اللون */
+}
+/* ======================================= */
+/* 9. تعديل إزاحة الرابط (Anchor Offset Fix) */
+/* ======================================= */
+
+/* تعيين إزاحة علوية تساوي ارتفاع شريط التنقل (Navbar) بالإضافة إلى مسافة 10 بكسل للتنفس */
+#about-cavoza {
+    /* (ارتفاع شريط التنقل عادة حوالي 70 بكسل) + 10 بكسل */
+    scroll-margin-top: 80px; 
+}
+/* ======================================= */
+/* 10. تعديل اتجاه القائمة للغة الإنجليزية (LTR) - الإصلاح النهائي للمحاذاة */
+/* ======================================= */
+
+/* 1. تطبيق الاتجاه LTR على كامل الجسم عند التبديل */
+body.en {
+    direction: ltr; 
+    /* ملاحظة: إزالة text-align: left هنا لكي لا يلغي التوسيط */
+}
+
+/* 2. عكس العناصر التي كانت محاذية لليمين (مثل أجزاء النموذج) */
+body.en .contact-form-container h2,
+body.en .contact-info h2,
+body.en .contact-info .location-details,
+/* عكس محاذاة العناوين الرئيسية للصفحات التي تم محاذاتها لليمين في RTL */
+body.en #our-goals {
+    text-align: left; 
+}
+
+/* 3. تصحيح محاذاة شريط التنقل (Navbar) وعكس اتجاه العناصر الداخلية */
+body.en #navbar {
+    direction: ltr; 
+    justify-content: space-between; 
+}
+
+body.en #navbar nav {
+    direction: ltr;
+    margin-left: 0; 
+    margin-right: auto; 
+}
+
+body.en .lang-switch {
+    direction: ltr;
+    justify-content: flex-end; 
+}
+
+/* 4. عكس تنسيق معلومات الاتصال (الأيقونة والنص) */
+body.en .info-item {
+    direction: ltr; /* عكس اتجاه عرض الأيقونة والنص */
+}
+body.en .info-item i {
+    /* عكس الهامش: يصبح الهامش على اليمين (margin-right) بدلاً من اليسار */
+    margin-right: 15px;
+    margin-left: 0;
+}
+
+/* 5. التأكد من أن جميع العناوين الرئيسية والفرعية التي يجب أن تكون مُوسَّطة، تبقى مُوسَّطة. */
+/* (لا نحتاج إلى كود هنا، لأننا أزلنا فرض المحاذاة لليسار) */
+
+/* 6. تصحيح عناصر أخرى (مثل أجزاء principles) */
+body.en .principle-item {
+    text-align: left; /* إذا كانت هذه العناصر محاذية لليمين في RTL */
+}
+body.en .principle-row {
+    direction: ltr;
+}
+
+/* 7. تصحيح قائمة الأهداف لـ LTR */
+body.en .goals-list li::before {
+    /* نقل الأيقونة لليسار */
+    margin-right: 10px;
+    margin-left: 0;
+}
+/* في القسم 10. تعديل اتجاه القائمة للغة الإنجليزية (LTR) */
+/* ... (الكود السابق موجود هنا) ... */
+
+/* 7. تصحيح محاذاة عناصر صفحة نبذة عنا (about.html) */
+
+/* عكس محاذاة جميع النصوص داخل حاوية محتوى الرؤية والرسالة لـ LTR */
+body.en #mission-vision .text-content {
+    text-align: left;
+}
+
+/* عكس محاذاة العناوين الرئيسية h2 و h3 داخل هذا القسم */
+body.en #mission-vision h2,
+body.en #mission-vision h3 {
+    text-align: left;
+}
