@@ -1,17 +1,61 @@
-// عرض/إخفاء قائمة اللغة عند الضغط على الزر
-document.getElementById('lang-btn').addEventListener('click', function() {
-    const menu = document.querySelector('.lang-options');
-    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const langBtn = document.getElementById('lang-btn');
+    const langText = document.getElementById('lang-text');
+    const body = document.body;
 
-// التبديل بين اللغات
-function switchLang(lang) {
-    const currentPage = window.location.pathname.split("/").pop();
-    if(currentPage.includes("index")) {
-        if(lang === 'ar') window.location.href = 'index.html';
-        if(lang === 'en') window.location.href = 'index-en.html';
-    } else if(currentPage.includes("contact")) {
-        if(lang === 'ar') window.location.href = 'contact.html';
-        if(lang === 'en') window.location.href = 'contact-en.html';
+    const currentLang = localStorage.getItem('lang') || 'ar';
+    
+    // تطبيق اللغة المخزنة أو الافتراضية عند التحميل
+    setLanguage(currentLang);
+
+    langBtn.addEventListener('click', () => {
+        const newLang = body.classList.contains('ar') ? 'en' : 'ar';
+        setLanguage(newLang);
+    });
+
+    function setLanguage(lang) {
+        // تحديث كلاس الـ body
+        body.classList.remove('ar', 'en');
+        body.classList.add(lang);
+        
+        // تحديث زر اللغة
+        langBtn.setAttribute('data-lang', lang);
+        
+        // **التعديل هنا:** تحديث نص الزر ليكون EN/AR دائمًا
+        langText.textContent = 'EN/AR';
+
+        // تحديث اتجاه النص العام
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        
+        // تحديث محتوى العناصر
+        updateContent(lang);
+
+        // تحديث عنوان الصفحة
+        updateTitle(lang);
+
+        // حفظ التفضيل
+        localStorage.setItem('lang', lang);
     }
+
+    function updateContent(lang) {
+    document.querySelectorAll('[data-ar], [data-en]').forEach(element => {
+        const content = element.getAttribute(`data-${lang}`);
+        if (content) {
+            // **التعديل هنا:** استخدام innerHTML للسماح بوجود وسم <span> وتفسيره (للتلوين الذهبي)
+            element.innerHTML = content; 
+        }
+    });
 }
+
+    function updateTitle(lang) {
+        const titleElement = document.querySelector('title');
+        const titleAr = titleElement.getAttribute('data-ar-title');
+        const titleEn = titleElement.getAttribute('data-en-title');
+        
+        if (lang === 'ar' && titleAr) {
+            document.title = titleAr;
+        } else if (lang === 'en' && titleEn) {
+            document.title = titleEn;
+        }
+    }
+});

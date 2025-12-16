@@ -1,42 +1,90 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>كافوزا – تواصل معنا</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-ar-title="كاڤوزا - تواصل معنا" data-en-title="Cavoza - Contact Us">كاڤوزا - تواصل معنا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Harmattan:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body class="ar"> <header id="navbar">
+        <a href="index.html" class="logo" data-ar="كاڤوزا" data-en="Cavoza">كاڤوزا</a>
+        <nav>
+            <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+            <a href="about.html" data-ar="نبذة عنا" data-en="About Us">نبذة عنا</a>
+            <a href="contact.html" class="active" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
+        </nav>
+        <div class="lang-switch">
+             <button id="lang-btn" data-lang="en">
+                <i class="fas fa-globe"></i> <span id="lang-text">EN/AR</span>
+            </button>
+        </div>
+    </header>
 
-<div class="lang-selector">
-  <button id="lang-btn">اللغة ▾</button>
-  <div class="lang-options">
-    <div id="ar" onclick="switchLang('ar')">✔ العربية</div>
-    <div id="en" onclick="switchLang('en')">الإنجليزية</div>
-  </div>
-</div>
+    <section id="contact-hero" class="dark-bg hero-padding">
+        <h1 data-ar="تواصل معنا" data-en="Contact Us">
+            تواصل معنا
+        </h1>
+        <p class="subtitle" data-ar="نحن هنا للرد على استفساراتك. يرجى ملء النموذج أدناه وسنتواصل معك في أقرب وقت." data-en="We are here to answer your inquiries. Please fill out the form below and we will contact you as soon as possible. &lrm;">
+            نحن هنا للرد على استفساراتك.
+            <br>
+            يرجى ملء النموذج أدناه وسنتواصل معك في أقرب وقت.
+        </p>
+    </section>
+    
+    <section class="light-bg">
+        <div id="contact-content">
+            
+            <div class="contact-form-container">
+                <h2 data-ar="أرسل لنا رسالة" data-en="Send Us a Message">أرسل لنا رسالة</h2>
+                <form action="https://formspree.io/f/xqarvkgp" method="POST" id="supply-request-form">
+                    
+                    <div class="form-group">
+                        <label for="contactName" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+                        <input type="text" id="contactName" name="contactName" required>
+                    </div>
 
-<header>
-<h1>كافوزا</h1>
-<p>تواصل معنا</p>
-</header>
+                    <div class="form-group">
+                        <label for="email" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
 
-<nav>
-<a href="index.html">الرئيسية</a>
-<a href="contact.html">تواصل معنا</a>
-</nav>
+                    <div class="form-group">
+                        <label for="phone" data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="material" data-ar="رسالتك" data-en="Your Message">رسالتك</label>
+                        <textarea id="material" name="material" rows="6" required></textarea>
+                    </div>
 
-<section class="section" id="contact">
-<h2>تواصل معنا</h2>
-<form action="#">
-<label>الاسم الكامل</label><input type="text" required>
-<label>البريد الإلكتروني</label><input type="email" required>
-<label>رقم الهاتف</label><input type="text">
-<label>رسالتك</label><textarea rows="5" required></textarea>
-<button type="submit">إرسال</button>
-</form>
-</section>
+                    <button type="submit" class="cta-button" data-ar="إرسال" data-en="Send">إرسال</button>
+                </form>
+            </div>
 
-<footer>جميع الحقوق محفوظة © 2025 كافوزا</footer>
-<script src="script.js"></script>
+            <div class="contact-info">
+                <h2 data-ar="موقعنا" data-en="Our Location">موقعنا</h2>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt icon-gold"></i>
+                    <div class="location-details">
+                        <h3 data-ar="الموقع الرئيسي" data-en="Main Location">الموقع الرئيسي</h3>
+                        <p data-ar="المملكة العربية السعودية، الرياض." data-en="Saudi Arabia, Riyadh. &lrm;">المملكة العربية السعودية، الرياض.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="dark-bg">
+        <p>
+            <span data-ar="جميع الحقوق محفوظة لدى" data-en="All Rights Reserved to">جميع الحقوق محفوظة لدى</span> 
+            <span class="highlight" data-ar="شركة كاڤوزا" data-en="Cavoza Company">شركة كاڤوزا</span> 
+            <span data-ar="&copy; 2025" data-en="&copy; 2025">&copy; 2025</span>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
